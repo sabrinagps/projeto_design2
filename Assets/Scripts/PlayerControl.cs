@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    Rigidbody2D rb;
+
+    void Start(){
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.CompareTag("Coin")){
             AudioManager.instance.PlayCoinPickupSound(other.gameObject);
             SFXManager.instance.ShowCoinParticles(other.gameObject);
             Destroy(other.gameObject);
             LevelManager.instance.IncrementCoinCount();
+            Impulse(10);
         }
-        if (other.gameObject.CompareTag("Gift")){
+        else if (other.gameObject.CompareTag("Gift")){
             StopMusicAndTape();
             AudioManager.instance.PlayLevelCompleteSound(gameObject);
             Destroy(other.gameObject);
+            Destroy(gameObject);
             LevelManager.instance.ShowLevelCompletePanel();
         }
         else if (other.gameObject.layer==LayerMask.NameToLayer("Enemies")){
@@ -22,8 +30,8 @@ public class PlayerControl : MonoBehaviour
         }
         else if (other.gameObject.layer==LayerMask.NameToLayer("Forbiden")){
             KillPlayer();
+        }
     }
-}
 
     void StopMusicAndTape(){
         Camera.main.GetComponentInChildren<AudioSource>().mute = true;
@@ -35,5 +43,10 @@ public class PlayerControl : MonoBehaviour
         SFXManager.instance.ShowDieParticles(gameObject);
         Destroy(gameObject);
         LevelManager.instance.ShowGameOverPanel();
+    }
+
+    void Impulse(float force){
+        rb.velocity = Vector3.zero;
+        rb.AddForce(Vector3.up * force, ForceMode2D.Impulse); 
     }
 }

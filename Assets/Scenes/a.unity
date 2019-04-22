@@ -1106,7 +1106,6 @@ GameObject:
   - component: {fileID: 470370729}
   - component: {fileID: 470370732}
   - component: {fileID: 470370735}
-  - component: {fileID: 470370734}
   - component: {fileID: 470370733}
   - component: {fileID: 470370736}
   m_Layer: 8
@@ -1212,7 +1211,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1230,24 +1229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa43237b692c5744a91d2c4d58c0511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &470370734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470370728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b14a1804b25084c9f0308527a9cdc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpeedFactor: 10
-  Rb: {fileID: 0}
 --- !u!70 &470370735
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
